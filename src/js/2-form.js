@@ -15,3 +15,15 @@ form.addEventListener('input', function (event) {
   const json = JSON.stringify(formData);
   localStorage.setItem('feedback-form-state', json);
 });
+
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  if (formData.email === '' || formData.message === '') {
+    return alert('Fill please all fields');
+  }
+  console.log(formData);
+  localStorage.removeItem('feedback-form-state');
+  formData.email = '';
+  formData.message = '';
+  form.reset();
+});
